@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 22px;
+  text-align: center;
+  width: 320px;
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}
+
+input {
+  padding: 12px;
+  width: 85%;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+button {
+  padding: 12px 26px;
+  border: none;
+  border-radius: 25px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#yes {
+  background: #ff4d6d;
+  color: white;
+}
+
+#no {
+  background: #d3d3d3;
+  position: absolute;
+}
+
+.gif {
+  width: 220px;
+  max-width: 100%;
+  border-radius: 18px;
+  margin-bottom: 15px;
+}
+
+.text {
+  font-size: 16px;
+  color: #d63384;
+  margin-bottom: 20px;
+}
+
+video {
+  width: 100%;
+  border-radius: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔐 PASSWORD SCREEN -->
+<div class="box" id="passwordBox">
+  <h2>Only you know this 😌</h2>
+  <p>When did we first start talking?</p>
+  <input type="password" id="password" placeholder="DDMMYYYY">
+  <br><br>
+  <button onclick="checkPassword()">Unlock 💋</button>
+</div>
+
+<!-- 💘 VALENTINE QUESTION -->
+<div class="box hidden" id="questionBox">
+  <img src="caricature.gif" class="gif" alt="Us">
+
+  <div class="text">
+    I am crazy for you! 😌💖<br>
+    I had to ask…<br><br>
+    <strong>WILL YOU BE MY VALENTINE?</strong>
+  </div>
+
+  <button id="yes" onclick="sayYes()">YES 💖</button>
+  <button id="no">NO 🙄</button>
+</div>
+
+<!-- 💋 VIDEO REWARD -->
+<div class="box hidden" id="videoBox">
+  <h2>Obviously 😏 You earned this 💋</h2>
+  <video autoplay muted playsinline>
+    <source src="kiss.mp4" type="video/mp4">
+  </video>
+</div>
+
+<script>
+function checkPassword() {
+  const pass = document.getElementById('password').value;
+  if (pass === "16062025") {
+    document.getElementById('passwordBox').classList.add('hidden');
+    document.getElementById('questionBox').classList.remove('hidden');
+  } else {
+    alert("Wrong 😏 No kisses until you get it right");
+  }
+}
+
+const noBtn = document.getElementById("no");
+
+noBtn.addEventListener("mouseover", () => {
+  noBtn.style.top = Math.random() * 80 + "%";
+  noBtn.style.left = Math.random() * 80 + "%";
+});
+
+function sayYes() {
+  document.getElementById('questionBox').classList.add('hidden');
+  document.getElementById('videoBox').classList.remove('hidden');
+  document.querySelector("video").muted = false;
+}
+</script>
+
+</body>
+</html>
